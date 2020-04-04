@@ -1,0 +1,25 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: microservice-user
+  datasource:
+    url: jdbc:mysql://localhost:13306/microservice_user?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true #自動建表
+    database: mysql
+eureka:
+  client:
+      service-url:
+        defaultZone: http://127.0.0.1:8888/eureka
+      register-with-eureka: true #註冊成服務 預設為true
+  instance:
+    prefer-ip-address: true #優先使用ip註冊
+    lease-expiration-duration-in-seconds: 90 #服務續約時間 預設90秒 如果90秒沒心跳就會移除服務
+    lease-renewal-interval-in-seconds: 30 #服務失效的時間 預設30秒 心跳間隔
+
